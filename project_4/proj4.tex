@@ -1,0 +1,72 @@
+
+\documentclass[11pt]{article}
+\usepackage[a4paper, total={17cm,24cm},left=2cm,top=3cm]{geometry}
+\usepackage{times}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[LGR,T1]{fontenc}
+\newcommand{\textgreek}[1]{\begingroup\fontencoding{LGR}\selectfont#1\endgroup}
+
+\usepackage[unicode]{hyperref}
+\urlstyle{same}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        {\Huge\scshape Vysoké učení technické v~Brně \\
+        \huge\vspace{0.4em}Fakulta informačních technologií}
+        \vspace{\stretch{0.382}}
+        
+        {\LARGE Typografie a~publikování\,--\,4.~projekt \\
+        \Huge\vspace{0.6em}\textbf{Po stopách typografie}\\\LARGE\scshape\vspace{0.6em}Citácie publikacií}
+        \vspace{\stretch{0.618}}
+    \end{center}
+    
+    {\Large \today \hfill Natália Bubáková}
+\end{titlepage}
+
+\newpage
+\section{Typografia, definícia a~jej význam}
+Na úvod je veľmi dôležité porozumieť pojmu \textbf{typografia}, ktorého význam sa dá vysvetliť dvojako. Z~gréckeho pôvodu slova, kde \textbf{typos} (\textgreek{τύπος})
+= \uv{\,\emph{znak}} a~\textbf{-grafia} (\textgreek{-γραφία})
+= \uv{\,\emph{písať}}, možno chápať typografiu ako obor (techniku či umenie) zaoberajúce sa \emph{písmom} a~jeho uložením či realizovaním tak, aby bolo jeho výsledkom  čitateľné a~atraktívné vyzobrazenie textu. S~tým súvisi výzor jednotlivych znakov, ich typ, veľkosť, ako aj veľkosť priestoru medzi znakmi či riadkami. \cite{wiki}\par
+Pod typografiou sa však často rozumie práve grafická úprava textovej zložky \emph{tlačovín}, ktorá len v posledných rokoch nadobúda i formu elektronickú. Od výberu písma, cez návrh layoutu, zarovnanie až po úpravu samotných stránok či výsledného dojmu z~publikácie. Pre dobre odvedenú typografickú prácu tak nesmú byť cudzie ani pojmy ako grid system, fonty a~ich hierarchia, viac na \cite{detepe}.\par
+Význam typografie tak siaha ďalej než sa na prvý pohľad môže zdať. Práve tá totiž vie odhaliť tón dokumentu, objasniť štruktúru a~podtrhnúť myšlienku textu. Môže poukázať na jeho skromnosť, technickosť či kreativitu. Vypichnúť jeho formálnosť alebo neformálnosť. Práve realizovanou formou vie oddeliť alebo zlúčiť myšlienky a~slová, frázy, vety tak nadobúdajú úplne iný význam, viz \cite{nature}.
+
+\section{História typografie}
+Začiatky typografie sú často prisudzované Gutenbergovemu vynálezu zo 40.\,rokov 14.\,storočia. Avšak nielenže v Číne bol podobný mechanizmus pre tlač objavený už o zopár storočí skôr, ale pre pôvodnu myšlienku typografie treba siahať ešte ďalej, a~to k počiatkom písma samotného, viz \cite{history}.\par
+Písmo také, aké dnes poznáme, prv obmylo mnoho starých civilizácií, kultúr, prešlo mnohými materiálmi a~práve vďaka ním dostalo túto formu. Tento prirodzený proces možno výstižne popísať Gillovými slovami:
+\begin{quote}
+ \uv{\itshape\,To vedlo 
+k~tomu, že když tehdejší člověk zapisoval písmena, 
+\uv{jak nejlépe dovedl,} za vzor mu sloužila písmena 
+z~kamenných nápisů. Netvrdil, že ten a~ten nástroj či materiál přirozeně nutí či nabádá k~tvorbě takových či onakých forem. Naopak tvrdil, že písmena mají takový či onaký tvar; a~proto, ať už používáme jakékoli nástroje či materiály, musíme tyto tvary 
+tvořit tak, jak nám naše nástroje a~materiály \-dovolí.} \cite{esej}
+\end{quote}
+A~práve týmto rozvojom vznikla potreba zaoberať sa danou problematikou. Z~umenia ručného písania vznikla kaligrafia a~tá sa spolu s~objavom kníhtlače stala podnetom pre typografiu\,--\,smer, ktorý sa mohol ďalej bohato rozvijať. \cite{kali}\par
+V neskorších rokoch sa tak sústredenie tohto oboru poberalo rôznymi smermi; od papieru, sadzby, formy textu, cez vplyv výberu farby, ornamentov až po moderné aspekty.  Tento priebeh možno zaznamenať aj v najstaršiom českom časopise \cite{casopis}, ktorý sa venoval typografii už od roku 1888. 
+
+\section{Počítačová typografia}
+S~príchodom nových technológii i~práve typografia dostala úplne nový nádych.
+Nastala globalizácia počítačovej typografie, vznik nových štandardizovaných znakových systémov, dostupných softvérov so širokou škálou fontov a~daľších z~toho vyplývajucích možností.
+Typografia sa tak stala omnoho prístupnejšiou.
+Od prvých ihličkových tlačiarni sa toto odvetvie rozšírilo na podivuhodné spektrum možností. Umenie typografie ako \emph{ascii art}, \emph{3D} či \emph{motion typography} prerástlo bežné štýly tlačenej publikácie, a~cez internet, animáciu a~kinematografiu sa nenápadne stalo našou bežnou súčasťou.
+Viac o vplyve počitačových technologií a~trendov v~danej oblasti tu \cite{PCtypo}.
+
+\subsection{Sádzacie programy}
+
+Na praktizovanie typografie sú v~dnešnej dobe nápomocné práve programy na to zamerané. Okrem textových editorov ako je \emph{Microsoft Word}, sú to najmä sádzacie programy: \emph{Adobe InDesign}, \emph{Adobe PageMaker}, \emph{QuarkXPress}, \emph{Ventura Publisher} a~\emph{\LaTeX}. Mimo \LaTeX{}u sa tieto radia do skupiny WYSIWYG (\emph{What You See Is What You Get}) editorov, viz \cite{programy}.\par
+\LaTeX{} je však založený na WYSIWYM (\emph{What You See Is What You Mean}), tak aby uživateľovi dal priestor zamerať sa na obsah písaného textu, zatiaľčo sa jednoduché príkazy postarajú o~úhľadnú úpravu celého dokumentu, viac na \cite{overleaf}.
+
+ \vspace{\stretch{1}}
+
+% supis citacii na konci textu - ako stoji v prednaske 
+% (nedala som ho na samostatnu stranu, lebo to v tomto pripade zle ukazalo, v bakalarskej praci tento zvyk vsak isto dodrzim)
+
+\bibliographystyle{slovakiso}   % czechiso prelozene do slovenciny, zdroj: https://github.com/matus-cuper/iso-690.git
+\bibliography{proj4}
+
+\end{document}
