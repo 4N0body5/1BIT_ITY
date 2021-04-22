@@ -1,0 +1,62 @@
+\section{Príklad 5}
+% Jako parametr zadejte skupinu (A-H)
+\patyZadani{H}
+
+\vspace{0.5cm}
+Na vyjadrenie vzťahov v obvode, podľa II.Kirchhoffového zákonu zostavíme rovnicu, do ktorej dosadíme vzťahy platné pre rezistor $I_R=\frac{U_R}{R}$ a pre cievku $i'_L=\frac{U_L}{L}$, kde $i_L=I_R$..
+
+$$U_R+U_L-U=0\quad \Rightarrow \quad R*i_l+L*i'_L-U=0$$
+$$i'_L=\frac{U-R*i_L}{L}\quad \Rightarrow \quad i'_L=\frac{18-40*i_L}{50}=\frac{9}{25}-\frac{4}{5}i_L$$
+
+\vspace{0.5cm}
+A tak sme dostali charakteristickú rovnicu, z ktorej si vyjadríme $\lambda$..
+
+$$\color{blue}i'_L+\frac{4}{5}i_L=\frac{9}{25}$$
+$$\lambda+\frac{4}{5}=0\quad \Rightarrow \quad {\color{red}{\lambda}}= -\frac{4}{5} $$
+
+\vspace{0.5cm}
+Riešenie dosadíme do všeobecného tvaru riešenia a zderivujeme..
+
+$$\color{blue}i_L(t)=k(t)*e^{\lambda t}$$
+$${\color{red}{i_L(t)}}=k(t)*e^{-\frac{4}{5}t}$$
+$${\color{red}{i'_L(t)}}=k'(t)*e^{-\frac{4}{5}t}-\frac{4}{5}k(t)e^{-\frac{4}{5}t}$$
+
+\vspace{0.5cm}
+Známe hodnoty doplníme do charakteristickej rovnice..
+$$k'(t)*e^{-\frac{4}{5}t}-\frac{4}{5}k(t)e^{-\frac{4}{5}t} \quad+\quad \frac{4}{5}k(t)*e^{-\frac{4}{5}t}=\frac{9}{25}$$
+$$k'(t)*e^{-\frac{4}{5}t}=\frac{9}{25}$$
+
+\vspace{0.5cm}
+Vyjadríme $k(t)$..
+$${\color{red}{k'(t)}}=\frac{9}{25}e^{\frac{4}{5}t}$$
+$$k(t)=\int\frac{9}{25}e^{\frac{4}{5}t}dt$$
+$${\color{red}{k(t)}}=\frac{9}{20}e^{\frac{4}{5}t}+c$$
+
+\vspace{0.5cm}
+A toto doplníme do očakávaného tvaru riešenia..
+$$i_L(t)=(\frac{9}{20}e^{\frac{4}{5}t}+c)*e^{\lambda t}\quad \Rightarrow \quad {\color{red}{i_L(t)}}=\frac{9}{20}+c*e^{-\frac{4}{5}t}$$
+
+Aplikujeme počiatočnú podmienku a dosadíme $i_L$..
+$$i_L(0)=\frac{9}{20}+c*e^{-\frac{4}{5}0}$$
+$$5=\frac{9}{20}+c \quad \Rightarrow \quad {\color{red}{c}}=5-\frac{9}{20}=\frac{91}{20}$$
+
+\vspace{0.5cm}
+Hľadané analytické riešenie teda je:
+$$\underline{{\color{red}{i_L(t)}}=\frac{9}{20}+\frac{91}{20}e^{-\frac{4}{5}t}}$$
+
+..a to si môžme overiť dosadením  $i_L(t)$ a $i'_L(t)$ do rovnice popisujúcej obvod:
+
+$$i'_L+\frac{4}{5}i_L=\frac{9}{25}$$
+
+\vspace{0.5cm}
+$$ i_L(t)=\frac{9}{20}+\frac{91}{20}e^{-\frac{4}{5}t}$$
+$$i'_L(t)= \frac{9}{25}e^{\frac{4}{5}t}*e^{-\frac{4}{5}t}-\frac{4}{5}*(\frac{9}{20}e^{\frac{4}{5}*t}+\frac{91}{20})*e^{-\frac{4}{5}t}=-\frac{364}{100}e^{-\frac{4}{5}t}$$
+
+\vspace{0.5cm}
+\begin{eqnarray*}
+ -\frac{364}{100}e^{-\frac{4}{5}t}\quad+\quad\frac{4}{5}*(\frac{9}{20}+\frac{91}{20}e^{-\frac{4}{5}t}) &=& \frac{9}{25}
+ \\
+ -\frac{364}{100}e^{-\frac{4}{5}t}\quad+\quad\frac{36}{100}+\frac{364}{100}e^{-\frac{4}{5}t} &=& \frac{9}{25}
+ \\
+ 0 &=& 0
+\end{eqnarray*}

@@ -1,0 +1,138 @@
+\section{Príklad 3}
+% Jako parametr zadejte skupinu (A-H)
+\tretiZadani{A}
+
+Podľa Kirchhoffových zákonov si odvodíme vzťahy prisúdzujúce ku každému z uzlov, z ktorých vychádzajú napätia $U_A$, $U_B$ a $U_C$
+
+\vspace{1cm}
+{\bfseries \scshape \large Uzol \color{blue}{A}:}
+
+\begin{center}
+\begin{circuitikz} \draw
+(-1,0)  to[short,i=$I_{R1}$,*-] (-2.5,0)
+(-1,0)  to[short,i=$I_{R2}$] (-1,-1.5)
+(-1,0)  to[short,i_=$I_{R3}$] (0.5,0)
+(-1,0.30) node{\large \color{blue}A}
+
+(5,1) to[R, l=$R_1$,i={\color{red}{$I_{R1}$}},*-] (3,1) to[V, v_=U] (3,-2) to[short,-*] (5,-2)
+(5,1) to[open, v=$U_A$] (5,-2)
+(5,1.30) node{\color{blue}A}
+
+(8,1) to[R, l=$R_2$,i={\color{red}{$I_{R2}$}},*-*] (8,-2)
+(8,1.30) node{\color{blue}A}
+(6.7,-0.5) node{$U_A$}
+
+(10,1) to[R, l=$R_3$,i={\color{red}{$I_{R3}$}},*-*] (12,1) to[open, v=$U_B$] (10,-2)
+(10,1) to[open, v=$U_A$] (10,-2)
+(10,-2) to[short,*-](10,-2)
+(10,1.30) node{\color{blue}A}
+;
+\draw[->] (7.8,0.9) arc (130:220:2cm);
+\end{circuitikz}
+\end{center}
+
+\vspace{0.5cm}
+A keďže nepoznáme smery jednotlivých napätí, predpokladáme, že všetky prúdy z daného uzlu vždy vychádzajú (i keď nie) a napokon ich v rovnici len neutrálne sčítame. V slučkách počítame napätie v smere hodinových ručičiek..
+
+{\color{blue}{$$I_{R1}+I_{R2}+I_{R3}=0$$}}
+$$U_A-U-I_{R1}*R_1=0 \quad \Rightarrow \quad {\color{red}{I_{R1}}}=\frac{U_{A}-U}{R_1}$$
+$$I_{R2}*R_2-U_A=0 \quad \Rightarrow \quad {\color{red}{I_{R2}}}=\frac{U_A}{R_2}$$
+$$I_{R3}*R_3+U_B-U_A=0 \quad \Rightarrow \quad {\color{red}{I_{R3}}}=\frac{U_A-U_B}{R_3}$$
+
+\vspace{1cm}
+{\bfseries \scshape \large Uzol \color{blue}{B}:}
+\begin{center}
+\begin{circuitikz} \draw
+(0.5,0)  to[short,i=$I_1$] (-1,0)  to[short,i=$I_{R3}$,*-] (-2.5,0)
+(-1,0)  to[short,i=$I_{R5}$] (-1,-1.5)
+(-1,0.30) node{\large \color{blue}B}
+
+(6,1) to[R, l=$R_3$,i_={\color{red}{$I_{R3}$}},*-*] (4,1)
+(6,1) to[open, v=$U_B$] (4,-2)
+(4,1) to[open, v=$U_A$] (4,-2)
+(4,-2) to[short,*-](4,-2)
+(6,1.30) node{\color{blue}B}
+
+(10,1) to[open, v=$U_B$] (8,-2)
+(10,1) to[R, l=$R_5$,i_={\color{red}{$I_{R5}$}},*-*] (10,-2)  to[open, v=$U_C$] (8,-2)
+(8,-2) to[short,*-](8,-2)
+(10,1.30) node{\color{blue}B}
+;
+\end{circuitikz}
+\end{center}
+
+\vspace{0.5cm}
+Nakoľko prúd $I_1$ má opačný smer od nášho predpokladu, musíme mu dať i opačné znamienko..
+{\color{blue}{$$I_{R3}+I_{R5}-I_1=0$$}}
+$$U_B-U_A-I_{R3}*R_3=0 \quad \Rightarrow \quad {\color{red}{I_{R3}}}=\frac{U_B-U_A}{R_3}$$
+$$I_{R5}*R_5+U_C-U_B=0 \quad \Rightarrow \quad {\color{red}{I_{R5}}}=\frac{U_B-U_C}{R_5}$$
+
+
+
+
+\vspace{1cm}
+{\bfseries \scshape \large Uzol \color{blue}{C}:}
+
+\begin{center}
+\begin{circuitikz} \draw
+
+(-1,0)  to[short,i=$I_{R4}$,*-] (-2.5,0)
+(-1,-1.5)  to[short,i=$I_2$] (-1,0)
+(-1,0)  to[short,i_=$I_1$] (0.5,0)
+(-1,0)  to[short,i=$I_{R5}$] (-1,1.5)
+(-0.7,0.3) node{\large \color{blue}C}
+
+(6,1) to[open, v=$U_B$] (4,-2)
+(6,-2) to[R, l_=$R_5$,i_={\color{red}{$I_{R5}$}},*-*] (6,1)
+(6,-2)  to[open, v=$U_C$] (4,-2)
+(4,-2) to[short,*-](4,-2)
+(6.3,-2) node{\color{blue}C}
+
+(11,-2)  to[R, l=$R_4$,i={\color{red}{$I_{R4}$}},*-*]  (8.5,-2)
+(11.3,-2) node{\color{blue}C}
+(9.8,-0.8) node{$U_C$}
+;
+\draw[->] (11,-1.8) arc (30:150:1.4cm);
+\end{circuitikz}
+\end{center}
+
+{\color{blue}{$$I_{R4}+I_{R5}+I_1-I_2=0$$}}
+$$U_C-U_B-I_{R5}*R_5=0 \quad \Rightarrow \quad {\color{red}{I_{R5}}}=\frac{U_C-U_B}{R_5}$$
+$$U_C-I_{R4}*R_4=0 \quad \Rightarrow \quad {\color{red}{I_{R4}}}=\frac{U_C}{R_4}$$
+
+\vspace{0.5cm}
+Doplníme si rovnice a zjednodušíme..
+\vspace{0.5cm}
+$${\color{blue}{A}}:\quad \frac{U_{A}-U}{R_1}+\frac{U_A}{R_2}+\frac{U_A-U_B}{R_3}=0 \Rightarrow \frac{U_{A}-120}{53}+\frac{U_A}{49}+\frac{U_A-U_B}{65}=0 \Rightarrow 9227 U_A-2597U_B=382200$$
+
+$${\color{blue}{B}}:\quad \frac{U_B-U_A}{R_3}+\frac{U_B-U_C}{R_5}-I_1=0 \Rightarrow \frac{U_B-U_A}{65}+\frac{U_B-U_C}{32}-0.9=0 \Rightarrow -32U_A+97U_B-65U_C=1872 $$
+
+$${\color{blue}{C}}:\quad \frac{U_C}{R_4}+\frac{U_C-U_B}{R_5}+I_1-I_2=0 \Rightarrow \frac{U_C}{39}+\frac{U_C-U_B}{32}+0,9-0,7=0 \Rightarrow -39U_B+71U_C=-249,6 $$
+
+\newpage
+Ďalej len dosadzovacou metódou dopočítame napätia $U_A$, $U_B$ a $U_C$, pomocou ktorých možno\\ vypočítať zvyšné vlastnosti obvodu..
+
+\begin{flushleft}
+${\color{blue}{A}}:\quad$ $$ U_A=\frac{382200+2597U_B}{9227}$$
+${\color{blue}{C}}:\quad$ $$ U_C=\frac{-249.6+39U_B}{71}$$
+${\color{blue}{B}}:$
+\end{flushleft}
+$$-32*\frac{382200-2597U_B}{9227}+97*U_B-65*\frac{-249.6+39U_B}{71}=1872$$
+$$\frac{-32*382200-32*2597U_B}{9227}+97U_B+\frac{65*249,6-65*39U_B} {71}=1872$$
+$$-71*32*382200-71*32*2597U_B+9227*71*97U_B+9227*65*249,6-9227*65*39U_B=9227*71*1872$$
+$$-868358400-5900384U_B+63546349U_B+149698848-23390445U_B= 1226379024$$
+$$34255520U_B=1945038576$$
+
+$$U_B=\frac{1945038576}{34255520}=56+\frac{128507}{164690} \approx 56,7803V$$
+$$U_A=\frac{382200+2597*(56+\frac{128507}{164690})}{9227}=57+\frac{66387}{164690} \approx 57,4031V$$
+$$U_C=\frac{-249,6+39*(56+\frac{128507}{164690})}{71}=27+\frac{110949}{164690} \approx 27,6737V$$
+
+\vspace{0.5cm}
+A tak si podľa Ohmovho zákonu dopočítame práve hľadaný prúd a napätie..
+
+\vspace{0.5cm}
+$$I_R2=\frac{U_A}{R_2}\quad \Rightarrow \quad (57+\frac{66387}{164690})*\frac{1}{49}=1+\frac{28243}{164690}\approx\underline{1,1715A}$$
+$$U_R2=I_R2*R_2\quad \Rightarrow \quad (1+\frac{28243}{164690})*49=57+\frac{66387}{164690} \approx \underline{57,4031V}$$
+
+\vspace{0.5cm}
+Prúd $I_{R2}$ je \underline{$1,1715A$} a napätie $U_{R2}$ je \underline{$57,4031V$} 

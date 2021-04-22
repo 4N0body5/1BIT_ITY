@@ -1,0 +1,161 @@
+\section{Príklad 1}
+% Jako parametr zadejte skupinu (A-H)
+\prvniZadani{H}
+
+\vspace{1cm}
+Najskôr si urobíme prvotné zjednodušenia a prekreslíme obvod tak, aby...
+\vspace{1cm}
+\begin{center}
+\begin{circuitikz} \draw
+(-8,1) to[short,-*] (-7,1) to[R, l=$R_1$, -*] (-5,1) -- (-3,1) to[R, l=$R_7$, -*] (-3,-1) to[R, l=$R_6$] (-5,-1)
+(-7,1) to[R, l=$R_2$] (-7,-1) to[R, l_=\color{red}{$R_{34}$}, -*] (-5,-1) to[R, l_=$R_5$] (-5,1)
+(-8,1) to[V, v_=\color{red}{U}] (-8,-3) to[R, l=$R_8$] (-3,-3) -- (-3,-1)
+
+ (0,0) to[short,-*] (1,0) -- (1,1) to[R, l=$R_1$, -*] (3,1) to[R, l=$R_7$] (5,1) -- (5,0) to[short,*-] (6,0)
+ (0,0) to[V, v_=U] (0,-3) to[R, l=$R_8$] (6,-3) -- (6,0)
+ (1,0) -- (1,-1) to[R, l=\color{red}{$R_{234}$}, -*] (3,-1) to[R, l=$R_6$] (5,-1) -- (5,0)
+ (3,1) to[R, l=$R_5$] (3,-1)
+ (0.75,0.25) node{\color{blue}A}
+ (3,1.30) node{\color{blue}B}
+ (3,-1.30) node{\color{blue}C}
+;
+\end{circuitikz}
+
+$$ {\color{red}{U}}=U_1+U_2 \quad \Rightarrow \quad 135+80=215V$$
+$${\color{red}{R_{34}}}=\frac{R_3*R_4}{R_3+R_4} \quad \Rightarrow \quad \frac{260*310}{260+310}=\frac{8 060}{57} \approx 141,4035\Omega$$
+$${\color{red}{R_{234}}}=R_2+R_{34} \quad \Rightarrow \quad 600+\frac{8 060}{57}=\frac{42260}{57} \approx 741,4035\Omega$$
+\end{center}
+
+\vspace{1cm}
+..sme mohli pokračovať úpravou \textit{TROJUHOLNÍK $\Rightarrow$ HVIEZDA}
+
+\begin{center}
+\begin{circuitikz} \draw
+ (0,0) to[R, l=\color{red}{$R_A$},*-*] (2,0) to[R, l=\color{red}{$R_B$},-*] (3.5,1) to[R, l=$R_7$] (5.5,1) -- (5.5,-1) to[R, l=$R_6$,-*] (3.5,-1) to[R, l=\color{red}{$R_C$}] (2,0)
+ (0,0) to[V, v_=U] (0,-3) to[R, l=$R_8$] (6,-3) -- (6,0) to[short,-*] (5.5,0)
+ (0,0.30) node{\color{blue}A}
+ (3.5,1.30) node{\color{blue}B}
+ (3.5,-1.30) node{\color{blue}C}
+
+ (8,0) to[R, l=$R_A$,-*] (10,0) -- (10,1) to[R, l=\color{red}{$R_{B7}$}] (12,1) -- (12,-1) to[R, l=\color{red}{$R_{C6}$}] (10,-1) -- (10,0)
+ (8,0) to[V, v_=U] (8,-3) to[R, l=$R_8$] (12.5,-3) -- (12.5,0) to[short,-*] (12,0)
+;
+\end{circuitikz}
+\end{center}
+
+$${\color{red}{R_A}}=\frac{R_1*R_{234}}{R_1+R_{234}+R_5} \quad \Rightarrow \quad  \frac{28736800}{57}*\frac{57}{113795}=\frac{5747360}{22759}\approx 252,5313\Omega$$
+$${\color{red}{R_B}}=\frac{R_1*R_5}{R_1+R_{234}+R_5} \quad \Rightarrow \quad \frac{391000*57}{113795}=\frac{4457400}{22759}\approx 195,8522\Omega$$
+$${\color{red}{R_C}}=\frac{R_5*R_{234}}{R_1+R_{234}+R_5} \quad \Rightarrow \quad \frac{24299500}{57}*\frac{57}{113795}=\frac{4859900}{22759}\approx 213,5375\Omega$$
+
+\vspace{0.5cm}
+Ďalej zjednodušujeme...
+
+$$ {\color{red}{R_{B7}}}=R_B+R_7 \quad \Rightarrow \quad \frac{4457400}{22759}+355=\frac{12536845}{22759} \approx 550,8522\Omega$$
+$$ {\color{red}{R_{C6}}}=R_C+R_6 \quad \Rightarrow \quad \frac{4859900}{22759}+870=\frac{24660230}{22759} \approx 1083,5375\Omega$$
+
+\begin{center}
+\begin{circuitikz} \draw
+(0,0) to[R, l=$R_A$] (1.5,0) to[R, l=\color{red}{$R_{B7C6}$}] (3,0) -- (3,-2) to[R, l=$R_8$] (0,-2)
+(0,0) to[V, v_=U] (0,-2)
+
+(5,0) to[V, v_=U] (5,-2) -- (7,-2) to[R, l_=\color{red}{$R_{EKV}$}] (7,0) -- (5,0)
+;
+\end{circuitikz}
+\end{center}
+$${\color{red}{R_{B7C6}}}=\frac{R_{B7}*R_{C6}}{R_{B7}+R_{C6}} \Rightarrow \frac{12536845*24660230}{22759^2}*\frac{22759}{12536845+24660230}=365+\frac{6563090069}{33862729197}\approx 365,1938\Omega$$
+
+$${\color{red}{R_{EKV}}}=R_A+R_{B7C6}+R_8 \Rightarrow \frac{5747360}{22759}+(365+\frac{6563090069}{33862729197})+265=882+\frac{1078895}{1487883} \approx 882,7251\Omega $$
+
+\vspace{1cm}
+..až napokon s výsledným $R_{EKV}$ môžeme dopočítať celkový prúd a napätia na ňom závislé
+
+\begin{center}
+\begin{circuitikz} \draw
+(0,0) to[V, v_=U] (0,-2) -- (2,-2) to[R, l_=$R_{EKV}$] (2,0)
+(0,0) to[short, i=\color{red}{$I$}] (2,0)
+
+(6,0) to[R,l=$R_A$, v=\color{red}{$U_{RA}$}] (7.5,0) to[R, l=$R_{B7C6}$, v=\color{red}{$U_{RB7C6}$}] (9,0) to[short, i=$I$] (9,-2) to[R, l=$R_8$, v=\color{red}{$U_{R8}$}] (6,-2)
+(6,0) to[V, v_=U] (6,-2)
+;
+\end{circuitikz}
+\end{center}
+
+$${\color{red}{I}}=\frac{U}{R_{EKV}} \quad \Rightarrow \quad \frac{215}{882+\frac{1078895}{1487883}}=\frac{319894845}{1313391701}\approx 0,2436A$$
+\\
+$${\color{red}{U_{RA}}}=I*R_A \quad \Rightarrow \quad \frac{319894845}{1313391701} * \frac{5747360}{22759}=61,50751753938\approx 61,5075V$$
+$${\color{red}{U_{RB7C6}}}=I*R_{B7C6} \quad \Rightarrow \quad \frac{319894845}{1313391701} * (365+\frac{6563090069}{33862729197})=88+\frac{977184361042}{1030740749071}\approx 88,9480V$$
+$${\color{red}{U_{R8}}}=I*R_8 \quad \Rightarrow \quad \frac{319894845}{1313391701}*265=64+\frac{715065061}{1313391701}\approx 64,5444V$$
+
+\vspace{1cm}
+Pokračujeme čiastkovými prúdmi v závislosti na rovnaké napätie v paralelnom zapojení\\ a ďalej s čiastkovými napätiami v závislosti na rovnaký prúd v sériovom zapojení rezistorov..
+
+\begin{center}
+\begin{circuitikz} \draw
+(0,0) to[R,l=$R_A$, v=$U_{RA}$, i=$I$] (2,0) -- (2,1) to[R,l=$R_{B7}$, v=$U_{RB7C6}$, i=\color{red}{$I_{RB7}$}] (5,1) to[short,-*] (5,0) -- (5.5,0) -- (5.5,-3) -- (3,-3) to[R,l=$R_8$, v=$U_{R8}$] (1,-3) -- (0,-3)
+(0,0) to[V, v_=U] (0,-3)
+(2,0) to[short,*-](2,-1) to[R,l=$R_{B6}$, i=\color{red} {$I_{RB7}$}] (5,-1) -- (5,0)
+
+(8,-0.5) to[R,l=$R_A$,-*] (10,-0.5) to[R,l=$R_B$, v=\color{red}{$U_{RB}$}] (11.5,1) to [R,l=$R_7$, v=\color{red}{$U_{R7}$}, i=$I_{RB7}$] (14,1) -- (14,-0.5) to[short,*-] (14.5,-0.5) -- (14.5,-3) to[R,l=$R_8$] (8,-3)
+(10,-0.5) to[R,l=$R_C$, v=\color{red}{$U_{RC}$}] (11.5,-1.5)to[R,l=$R_6$, v=\color{red}{$U_{R6}$}, i=$I_{RC6}$] (14,-1.5) -- (14,-0.5)
+(8,-0.5) to[V, v_=U] (8,-3)
+;
+\end{circuitikz}
+\end{center}
+
+$${\color{red}{I_{RB7}}}=\frac{U_{RB7C6}}{R_{B7}} \quad \Rightarrow \quad
+(88+\frac{977184361042}{1030740749071}) * \frac{22759}{12536845} =\frac{212077978}{1313391701}\approx 0,1615A$$
+$${\color{red}{I_{RC6}}}=\frac{U_{RB7C6}}{R_{C6}} \quad \Rightarrow \quad
+(88+\frac{977184361042}{1030740749071}) * \frac{22759}{24660230} =\frac{3717823}{45289369}\approx  \underline{0,0821A}$$
+
+$${\color{red}{U_{RB}}}=I_{RB7}*R_B \quad \Rightarrow \quad \frac{212077978}{1313391701}*\frac{4457400}{22759}= 31+\frac{42747015383}{68401560007} \approx 31,6249V $$
+
+$${\color{red}{U_{R7}}}=I_{RB7}*R_7 \quad \Rightarrow \quad \frac{212077978}{1313391701}*355= 57+\frac{424355233}{1313391701} \approx 57,3231V $$
+
+$${\color{red}{U_{RC}}}=I_{RC6}*R_C \quad \Rightarrow \quad \frac{3717823}{45289369}*\frac{4859900}{22759} = 17+\frac{23724141891}{44814815177} \approx 17,5294V $$
+
+$${\color{red}{U_{R6}}}=I_{RC6}*R_6 \quad \Rightarrow \quad \frac{3717823}{45289369}*870 = 71+\frac{18960811}{45289369} \approx \underline{71,4183V}$$
+
+\vspace{1cm}
+A skôr ako sme sa spätným rozkladom zjednodušeného obvodu dostali k tomu pôvodnému, už v tejto fáze vieme určiť napätie \underline{$U_{R6}\approx 71,4183V$} a prúd $I_{RC6}=$ \underline{$I_{R6}\approx 0,0821A$}\\
+
+\vspace{2cm}
+A to si vďaka Kirchhoffovým zákonom môžeme o krok ďalej i skontrolovať..
+
+
+\begin{center}
+\begin{circuitikz} \draw
+ (0,0) to[short,-*] (1,0) to[short, i=\color{red}{$I_{R1}$}] (1,1.5) to[R,l=$R_1$, v=\color{red}{$U_{R1}$},-*] (3,1.5) to[R,l=$R_7$, v=$U_{R7}$] (5,1.5) to[short,-*] (5,0) -- (5.5,0) -- (5.5,-3) -- (3.5,-3) to[R,l=$R_8$, v=$U_{R8}$] (2,-3) -- (0,-3)
+ (1,0) to[short, i_=\color{red}{$I_{R234}$}] (1,-1) to[R,l=$R_{234}$, v=\color{red}{$U_{R234}$},-*] (3,-1) to[R,l=$R_6$, v=$U_{R6}$, i=$I_{R6}$] (5,-1) -- (5,0)
+ (3,1.5) -- (3,1) to[R,l=$R_5$, v=\color{red}{$U_{R5}$},i=\color{red}{$I_{R5}$}] (3,-0.5) -- (3,-1)
+ (0,0) to[V, v_=U] (0,-3)
+ (0.7,-2.45) node{\small I.}
+ (0.75,2.3) node{\small II.}
+ (1.4,-0.15) node{\scriptsize III.}
+;
+\draw[dashed] 
+    (0,0) to[V, v=U'] (0,3)
+    (5,0) -- (5.5,0) -- (5.5,3) -- (3.5,3) to[R,l=$R'_8$, v=$U'_{R8}$] (2,3) -- (0,3);
+\draw[blue,->] (1,2.4) arc (0:200:0.3cm);
+\draw[blue,<-] (1,-2.4) arc (0:200:0.3cm);
+\draw[blue,<-] (1.6,0) arc (0:200:0.25cm);
+\end{circuitikz}
+\end{center}
+
+$$I.. \quad {\color{blue}{U_{R234}+U_{R6}+U_{R8}-U=0}}$$
+$${\color{red}{U_{R234}}}=U-U_{R6}-U_{R8} \quad \Rightarrow \quad 215- (71+\frac{18960811}{45289369})-(64+\frac{715065061}{1313391701}) = 79+\frac{48463121}{1313391701} \approx 79,0369V $$
+\\
+$$II.. \quad {\color{blue}{U_{R1}+U_{R7}+U_{R8}-U=0}}$$
+$${\color{red}{U_{R1}}}=U-U_{R7}-U_{R8} \quad \Rightarrow \quad 215-(57+\frac{424355233}{1313391701})-(64+\frac{715065061}{1313391701}) = 93+ \frac{173971407}{1313391701}\approx 93,1325V $$
+\\
+$$III.. \quad {\color{blue}{U_{R1}+U_{R5}-U_{R234}=0}}$$
+$${\color{red}{U_{R5}}}=U_{R234}-U_{R1} \quad \Rightarrow \quad (79+\frac{48463121}{1313391701})-(93+ \frac{173971407}{1313391701}) = -(14+ \frac{5456882}{57103987}) \approx -14,0956V$$
+\\
+$${\color{red}{I_{R234}}}=\frac{U_{R234}}{R_{234}} \quad \Rightarrow \quad (79+\frac{48463121}{1313391701})*\frac{57}{42260} = \frac{7369125}{69125879} \approx 0,1066A  $$
+
+$${\color{red}{I_{R5}}}=\frac{U_{R5}}{R_5} \quad \Rightarrow \quad -(14+ \frac{5456882}{57103987})*\frac{1}{575} = -\frac{32196508}{1313391701} \approx -0,0245A  $$
+\\
+$${\color{blue}{I_{R234}+I_{R5}-I_{R6}=0}}$$
+$$\frac{7369125}{69125879} + (-\frac{32196508}{1313391701}) - \frac{3717823}{45289369} = 0 $$
+
+\vspace{1cm}
+...a kontrola nám pekne vyšla !

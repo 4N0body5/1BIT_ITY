@@ -1,0 +1,69 @@
+\section{Príklad 2}
+% Jako parametr zadejte skupinu (A-H)
+\druhyZadani{H}
+
+\vspace{1cm}
+V prvom kroku si prekreslíme obvod bez zdroju (nahradíme ho skratom) a $R_3$ nahradíme rozpojenými svorkami pre výpočet $R_i$.
+\vspace{1cm}
+\begin{center}
+\begin{circuitikz} \draw
+(-8,0) to[short,-*] (-7,0) -- (-7,1) to[R, l=$R_1$, -*] (-5,1) to[R, l=$R_4$] (-3,1) to[R, l=$R_5$, -*] (-3,-1) to[R, l=$R_6$] (-5,-1)
+(-7,0)-- (-7,-1) to[R, l_=$R_2$, -*] (-5,-1) to[short,-o](-5,-0.5)
+(-5,1)  to[short,-o](-5,0.5)
+(-8,0) -- (-8,-3) -- (-3,-3) -- (-3,-1)
+
+(2,-1)  to[short,*-*] (0,-1) to[R, l=$R_1$] (0,1) -- (1,1) to[short,*-o] (1,1.5)
+(1,1) -- (2,1) to[R, l={\color{red}{$R_{45}$}}] (2,-1) to[R, l=$R_6$] (2,-3) -- (0,-3) to[R, l=$R_2$] (0,-1)
+(1,-3) to[short,*-o] (1,-3.5)
+;
+\draw[dashed] 
+    (-8,-1.5) to[V] (-8,-1.5);
+\end{circuitikz}
+\end{center}
+
+Pre ľahší výpočet sme si sériovo zapojené $R_4$ a $R_5$ zjednotili a obvod prekreslili.
+Ďalej len\\ dopočítame celkový odpor cez čiastkové odpory získané z paralelného a navzájom seriového zapojenia rezistorov..
+
+$$ {\color{red}{R_{45}}}=R_4+R_5 \quad \Rightarrow \quad 205+560=765\Omega$$
+$${\color{red}{R_{145}}}=\frac{R_1*R_{45}}{R_1+R_{45}} \quad \Rightarrow \quad \frac{190*765}{190+765}=152+\frac{38}{191} \approx 152,1990\Omega$$
+$${\color{red}{R_{26}}}=\frac{R_2*R_6}{R_2+R_6} \quad \Rightarrow \quad \frac{360*180}{360+180}=120\Omega$$
+$${\color{red}{R_i}}=R_{145}+R_{26} \quad \Rightarrow \quad (152+\frac{38}{191}) + 120=272+\frac{38}{191} \approx 272,1990\Omega$$
+
+\vspace{2cm}
+V ďaľšiom kroku počítame so zdrojom, avšak medzi rozpojené svorky akoby vložíme voltmeter a tým dopočítame $U_i$
+\begin{center}
+\begin{circuitikz} \draw
+(-8,0) to[short,-*] (-7,0) -- (-7,1) to[R, l=$R_1$, v={\color{red}{$U_{R1}$}}, -o] (-5,1) to[R, l=$R_{45}$] (-3,1) to[short, -*] (-3,-1) to[R, l_=$R_6$] (-5,-1)
+(-7,0)-- (-7,-1) to[R, l=$R_2$, v={\color{red}{$U_{R2}$}}, -o] (-5,-1) 
+ (-5,1) to[open, v={\color{red}{$U_i$}}] (-5,-1)
+(-8,0) to[V, v_=U] (-8,-3) -- (-3,-3) -- (-3,-1)
+;
+\end{circuitikz}
+\end{center}
+\vspace{1cm}
+A nakoľko dvojica $R_1$ a $R_{45}$ rovnako ako aj $R_2$ a $R_6$ sú v sérii priamo napojené na zdroj napätia $U$, tak pri výpočte môžeme použiť vzorec pre výpočet deliča napätia..
+
+$${\color{red}{U_{R1}}}=U*\frac{R_1}{R_1+R_{45}} \quad \Rightarrow \quad 220*\frac{190}{190+765} = 43+\frac{147}{191} \approx 43,7696V $$
+$${\color{red}{U_{R2}}}=U*\frac{R_2}{R_2+R_6} \quad \Rightarrow \quad 220*\frac{360}{360+180} = 146+\frac{2}{3} \approx 146,6667V $$
+
+$$U_{R1} + U_i - U_{R2} = 0$$
+$${\color{red}{U_i}}=U_{R2}-U_{R1} \quad \Rightarrow \quad (146+\frac{2}{3})-(43+\frac{147}{191}) = 102+\frac{514}{573}\approx 102,8970V $$
+\\ 
+V poslednom kroku si prekreslíme zjednodušný obvod s $R_3$..
+
+\begin{center}
+\begin{circuitikz} \draw
+
+(0,0) to[R, l=$R_i$,v=$U_i$,-o] (3,0) to[R, l=$R_3$, v={\color{red}{$U_{R3}$}}, i={\color{red}{$I_{R3}$}}, -o] (3,-3) -- (0,-3)
+(0,0) to[V, v_=U] (0,-3)
+;
+\end{circuitikz}
+\end{center}
+
+..a napokon len dopočítame $I_{R3}$ a $U_{R3}$ podľa Ohmovho zákona
+
+$${\color{red}{I_{R3}}}=\frac{U_i}{R_i+R_3} \quad \Rightarrow \quad \frac{102+\frac{514}{573}}{(272+\frac{38}{191})+580} = \frac{5896}{48831}\approx \underline{0,1207A}$$
+
+$${\color{red}{U_{R3}}}=R_3*I_{R3}=580*\frac{5896}{48831}=70+\frac{1510}{48831} \approx \underline{70,0309V}$$
+\\
+Prúd $I_{R3}$ vyšiel \underline{$120,743mA$} a napätie $U_{R3}$ \underline{$70,0309V$}
